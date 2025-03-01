@@ -30,13 +30,13 @@ namespace ExampleSolynBook.Items
         /// Register and creates a custom solyn book
         /// </summary>
         /// <param name="rarity">Value from 1 to 3 (other values not tested)</param>
-        /// <param name="TexturePath">Full texture path</param>
-        public void CreateSolynBook(int rarity, string TexturePath)
+        /// <param name="texturePath">Full texture path</param>
+        public void CreateSolynBook(int rarity, string texturePath)
         {
             //Getting a Wrath of the Gods as full programm (Assembly)
             Assembly wotg = WotG.Code;
 
-            //Getting a all mod's methods from Assembly
+            //Getting a all WotG mod's methods from Assembly
             //Do not use a Assembly.GetType() for weak reference mods
             var types = AssemblyManager.GetLoadableTypes(wotg);
 
@@ -46,44 +46,12 @@ namespace ExampleSolynBook.Items
             //Creating a variable with LoadableBookData type and needed values
             object bookData = Activator.CreateInstance(bookDataType);
             bookDataType.GetField("Rarity", BindingFlags.Public | BindingFlags.Instance).SetValue(bookData, rarity); //Sets 3 stars for rarity of book
-            bookDataType.GetField("TexturePath", BindingFlags.Public | BindingFlags.Instance).SetValue(bookData, TexturePath); //Sets a texture path
+            bookDataType.GetField("TexturePath", BindingFlags.Public | BindingFlags.Instance).SetValue(bookData, texturePath); //Sets a texture path
 
             //Register a Solyn Book (creating a item itself and adding to wotg mod's array)
             object result = FindType(types, "NoxusBoss.Core.Autoloaders.SolynBooks.SolynBookAutoloader").GetMethod("Create", BindingFlags.Public | BindingFlags.Static).Invoke(null, new object[] { Mod, bookData });
 
         }
-        /// <summary>
-        /// WARNING: HE DONT WORK CURRENTLY
-        /// Gets a Solyn Book item id
-        /// </summary>
-        /// <param name="name">Name of Solyn Book. Uses texture file name. Like "ExampleSolynBook" in this Example Mod</param>
-        /// <returns>Item type</returns>
-        /*public static int GetSolynBook(string name)
-        {
-            if (ModLoader.HasMod("NoxusBoss"))
-            {
-                //Getting a Wrath of the Gods as full programm (Assembly)
-                Assembly wotg = WotG.Code;
-
-                //Getting a all mod's methods from Assembly
-                //Do not use a Assembly.GetType() for weak reference mods
-                var types = AssemblyManager.GetLoadableTypes(wotg);
-
-                //Getting a SolynBookAutoloader static class type from WotG
-                Type solynBooks = FindType(types, "NoxusBoss.Core.Autoloaders.SolynBooks.SolynBookAutoloader");
-
-                //Getting a Books Dictionary array;
-                //Yea, SolynBookAutoloader has only one FieldInfo
-
-                //var dictionaryObject = solynBooks.GetFields()[0].GetValue(null);
-                //var dictionary = dictionaryObject as Dictionary<string, object>;
-                //dictionary.TryGetValue(name, out var item);
-                //return (item as ModItem).Type;
-            }
-
-            return -1;
-        }*/
-        //Used for more compact coding
         private static Type? FindType(Type[] array, string name)
         {
             foreach (var type in array)
@@ -99,6 +67,7 @@ namespace ExampleSolynBook.Items
             }
             return null;
         }
+        //Used for more compact coding
         public override void Unload()
         {
             WotG = null;

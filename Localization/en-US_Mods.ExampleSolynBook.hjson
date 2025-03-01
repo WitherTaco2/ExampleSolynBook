@@ -1,7 +1,7 @@
 Items: {
 	ExampleSolynBook: {
 		DisplayName: Example Solyn's Book
-		ObtainmentHint: "[c/F79BC6:Check a Example Solyn Book mod and get a Book from Dragon's Lens]"
+		ObtainmentHint: "[c/F79BC6:Creates with new players]"
 		Tooltip:
 			'''
 			Colorless book that contain Example Code for making a custom Solyn's Book

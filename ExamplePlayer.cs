@@ -1,7 +1,12 @@
-﻿namespace ExampleSolynBook
+﻿using System.Collections.Generic;
+using Terraria;
+using Terraria.ModLoader;
+
+namespace ExampleSolynBook
 {
-    /*public class ExamplePlayer : ModPlayer
+    public class ExamplePlayer : ModPlayer
     {
+        //New players starts with Example Solyn Book
         public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
         {
             static Item createItem(int type)
@@ -12,7 +17,8 @@
             }
 
             if (!mediumCoreDeath)
-                yield return createItem(ModContent.Find<ModItem>("ExampleSolynBook").Type);
+                //Uses book's texture file name as internal name of item
+                yield return createItem(ExampleSolynBook.mod.Find<ModItem>("ExampleSolynBook").Type);
         }
-    }*/
+    }
 }
