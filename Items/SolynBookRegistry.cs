@@ -52,13 +52,14 @@ namespace ExampleSolynBook.Items
             object result = FindType(types, "NoxusBoss.Core.Autoloaders.SolynBooks.SolynBookAutoloader").GetMethod("Create", BindingFlags.Public | BindingFlags.Static).Invoke(null, new object[] { Mod, bookData });
 
         }
+        //Used for more compact coding
         private static Type? FindType(Type[] array, string name)
         {
             foreach (var type in array)
             {
                 if (type.FullName is not null)
                 {
-                    //Mod.Logger.Debug(type.FullName);
+                    //Find a needed type of code
                     if (type.FullName == name)
                     {
                         return type;
@@ -67,7 +68,6 @@ namespace ExampleSolynBook.Items
             }
             return null;
         }
-        //Used for more compact coding
         public override void Unload()
         {
             WotG = null;
