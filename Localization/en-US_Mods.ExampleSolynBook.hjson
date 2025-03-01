@@ -1,2 +1,11 @@
-# This file will automatically update with entries for new content after a build and reload.
-
+Items: {
+	ExampleSolynBook: {
+		DisplayName: Example Solyn's Book
+		ObtainmentHint: "[c/F79BC6:Check a Example Solyn Book mod and get a Book from Dragon's Lens]"
+		Tooltip:
+			'''
+			Colorless book that contain Example Code for making a custom Solyn's Book
+			Check a https://github.com/WitherTaco2/ExampleSolynBook for getting more information
+			'''
+	}
+}

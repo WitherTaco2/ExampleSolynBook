@@ -1,3 +1,4 @@
 displayName = Example Solyn Book
 author = WitherTaco
-version = 0.1
+version = 1.0
+weakReferences = NoxusBoss
